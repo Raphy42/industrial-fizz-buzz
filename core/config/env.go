@@ -44,8 +44,8 @@ type Manifest struct {
 	Addr string `splitwords:"true"`
 	// CorsEnabled will enable CORS on all endpoints if set, defaults to true
 	CorsEnabled bool `splitwords:"true" default:"true"`
-	// FizzBuzzAllowEmptyStr allows empty str to be used as words for the fizzbuzz endpoint, defaults to false
-	FizzBuzzAllowEmptyStr bool `splitwords:"true" default:"false"`
+	// AllowEmptyStr allows empty str to be used as words for the fizzbuzz endpoint, defaults to false
+	AllowEmptyStr bool `splitwords:"true" default:"false"`
 }
 
 // IsProd check whether the application is configured for production.

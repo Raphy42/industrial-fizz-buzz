@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  api:
+    build:
+      dockerfile: ./infra/Dockerfile
+      context: .
+    env_file:
+      - .env
+    ports:
+      - '8080:8080'

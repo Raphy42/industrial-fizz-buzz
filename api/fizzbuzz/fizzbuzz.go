@@ -54,7 +54,7 @@ func fizzBuzz(ctx context.Context, request Request) (*Response, error) {
 		return nil, errors.BadRequest(nil, "both `int1` and `int2` query parameters must be valid positive non-zero integer")
 	}
 
-	if !config.Config.FizzBuzzAllowEmptyStr && (request.Str1 == "" || request.Str2 == "") {
+	if !config.Config.AllowEmptyStr && (request.Str1 == "" || request.Str2 == "") {
 		msg := "both `str1` and `str2` query parameters must be set, empty words have been disallowed through configuration"
 		return nil, errors.BadRequest(nil, msg)
 	}
