@@ -1,10 +1,32 @@
 version: '3.8'
 services:
+  # the actual application
   api:
     build:
-      dockerfile: ./infra/Dockerfile
+      dockerfile: infra/server.Dockerfile
       context: .
     env_file:
       - .env
     ports:
       - '8080:8080'
+    restart: on-failure
+
+  # a Deno client, which emulates some traffic
+  client:
+    platform: linux/amd64
+    build:
+      dockerfile: infra/client.Dockerfile
+      context: .
+    environment:
+      API_URL: http://api:8080
+    restart: on-failure
+
+  #godoc
+  godoc:
+    build:
+      dockerfile: infra/godoc.Dockerfile
+      context: .
+    ports:
+      - '6060:6060'
+    restart: on-failure
+

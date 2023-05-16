@@ -13,6 +13,7 @@ import (
 )
 
 type (
+	// Request is the request body for the FizzBuzz endpoint
 	Request struct {
 		Int1  int    `query:"int1"`
 		Int2  int    `query:"int2"`
@@ -20,10 +21,12 @@ type (
 		Str1  string `query:"str1"`
 		Str2  string `query:"str2"`
 	}
+	// Response returned by the FizzBuzz endpoint
 	Response []string
 )
 
-var FizzBuzz = http.GenericHandler("/api/v1/fizzbuzz", "GET", fizzBuzz)
+// FizzBuzz handles GET /api/v1/fizzbuzz
+var FizzBuzz = http.Get("/api/v1/fizzbuzz", fizzBuzz)
 
 func fizzBuzzImpl(number int, request Request) string {
 	switch 0 {

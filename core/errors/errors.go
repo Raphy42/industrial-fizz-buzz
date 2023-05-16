@@ -9,6 +9,7 @@ import (
 )
 
 type (
+	// Trace is akin to a light backtrace
 	Trace struct {
 		File   string `json:"file"`
 		Line   int    `json:"line"`
@@ -28,6 +29,7 @@ func newError(skipCallers int, parent error, statusCode int, format string, args
 	var trace *Trace
 	var err error
 
+	// skip one more, as we don't want this caller frame as a trace
 	caller, file, line, ok := runtime.Caller(skipCallers + 1)
 	msg := fmt.Sprintf(format, args...)
 	if ok {

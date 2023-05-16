@@ -1,1 +1,6 @@
-Dockerfile
+docker-compose.yml
+README.md
+infra
+.env
+.env.example
+./client/dist

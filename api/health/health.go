@@ -7,6 +7,7 @@ import (
 )
 
 var (
+	// Handler handles GET /health
 	Handler = http.Get("/health", healthCheck)
 )
 
